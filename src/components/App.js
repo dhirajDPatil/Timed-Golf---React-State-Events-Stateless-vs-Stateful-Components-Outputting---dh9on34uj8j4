@@ -1,26 +1,38 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
+import Ball from "./Ball";
+import Hole from "./Hole";
+import Timer from "./Timer";
 import "../styles/App.css";
-class Timer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { time: 0, x: 0, y: 0 };
-  }
-  componentDidMount() {
-    
-  }
 
-  componentWillUnmount() {
-    
-  }
+function App() {
+  const [start, setStart] = useState(false);
+  const [xyhole, setXYhole] = useState({
+    left: "0px",
+    top: "0px",
+  });
+  const clickHandler = () => {
+    setStart(true);
+  };
 
+  const getStyle = (data) => {
+    setXYhole(data);
+  };
 
-
-  render() {
-    return (
- <>
-</>
-    );
-  }
+  return (
+    <>
+      {!start ? (
+        <button className="start" onClick={clickHandler}>
+          Start
+        </button>
+      ) : (
+        <>
+          <Ball getStyle={getStyle} />
+          <Hole />
+          <Timer ballXY={xyhole} />
+        </>
+      )}
+    </>
+  );
 }
 
-export default Timer;
+export default App;
