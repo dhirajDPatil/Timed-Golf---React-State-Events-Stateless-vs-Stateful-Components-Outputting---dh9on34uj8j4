@@ -32,8 +32,6 @@ function Ball({getStyle}) {
         getStyle(style);
     }
 
-
-    
     useEffect(()=> {
         timerStyle();
         const ballMovement = (e) => {
