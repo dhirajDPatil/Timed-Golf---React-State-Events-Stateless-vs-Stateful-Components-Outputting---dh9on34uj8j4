@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function Ball({getStyle}) {
+function Ball({getStyle,timerStop}) {
     const [x, setx] = useState(0);
     const [y, sety] = useState(0);
     const [style, setStyle] = useState({
@@ -11,6 +11,7 @@ function Ball({getStyle}) {
 
     const timerStyle = () => {
         if(x === 250 && y === 250){
+            timerStop();
             setDest(true);
         }
         getStyle(style);

@@ -5,6 +5,7 @@ import Timer from "./Timer";
 import "../styles/App.css";
 
 function App() {
+  const [flag, setFlag] = useState(false);
   const [start, setStart] = useState(false);
   const [xyhole, setXYhole] = useState({
     left: "0px",
@@ -17,6 +18,9 @@ function App() {
   const getStyle = (data) => {
     setXYhole(data);
   };
+  const timerStop=()=> {
+    setFlag(true)
+  }
 
   return (
     <>
@@ -26,9 +30,9 @@ function App() {
         </button>
       ) : (
         <>
-          <Ball getStyle={getStyle} />
+          <Ball getStyle={getStyle} timerStop={timerStop} />
           <Hole />
-          <Timer ballXY={xyhole} />
+          <Timer ballXY={xyhole} stop={flag}/>
         </>
       )}
     </>
